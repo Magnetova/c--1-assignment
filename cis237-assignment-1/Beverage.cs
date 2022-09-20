@@ -13,12 +13,54 @@ namespace cis237_assignment_1
 {
     internal class Beverage
     {
-        // Variables: id, name, pack, price, active
+        private string _id;
+        private string _name;
+        private string _pack;
+        private decimal _price;
+        private bool _active;
 
-        // Constructors: 5 parameter constructor
+        public Beverage(string Id, string Name, string Pack, decimal Price, bool Active)
+        {
+            this._id = Id;
+            this._name = Name;
+            this._pack = Pack;
+            this._price = Price;
+            this._active = Active;
+        }
 
-        // Public Methods: ToString (override) - used to convert an instance of Beverage to a String containing all the porperties of the beverage in a readable format
+        public string Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
 
-        // Private Methods: Your choice
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+
+        public decimal Price
+        {
+            get { return _price; }
+            set { _price = value; }
+        }
+
+        public bool Active
+        {
+            get { return _active; }
+            set { _active = value; }
+        }
+
+        public override string ToString()
+        {
+            return _id + "\t" + _name + "\t" + _pack + "\t" + _price + "\t" + _active;
+        }
+
+
+
+
+        public Beverage() { }
+
     }
 }
