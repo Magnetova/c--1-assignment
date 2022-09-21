@@ -20,7 +20,7 @@ namespace cis237_assignment_1
 
             string input = Console.ReadLine();
 
-            while (input != "1" && input != "2")
+            while (input != "1" && input != "2" && input != "3" && input != "4" && input != "5")
             {
                 this.PrintErrorMessage();
 

@@ -13,12 +13,15 @@ namespace cis237_assignment_1
 {
     internal class BeverageCollection
     {
-        // Variables: beverages (Array of type Beverage, It must be an array. No List)
+        Beverage[] beverages = new Beverage[1000];
 
-        // Constructors: Your Choice
+        CSVProcessor csvProcessor = new CSVProcessor();
 
-        // Public Methods: Add, Search, ToString
+        csvProcessor.ImportCsv(pathToCsv, beverages);
 
-        // Private Methods: Your Choice
+
     }
+
+        
 }
+

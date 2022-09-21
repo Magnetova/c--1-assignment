@@ -11,7 +11,6 @@ namespace cis237_assignment_1
     {
         static void Main(string[] args)
         {
-            Beverage[] beverages = new Beverage[100000];
 
             UserInterface userInterface = new UserInterface();
 
@@ -26,7 +25,7 @@ namespace cis237_assignment_1
 
             while (choice != 2)
             {
-                if (choice == 1)
+                if (choice == 2)
                 {
                     string outputString = "";
 
