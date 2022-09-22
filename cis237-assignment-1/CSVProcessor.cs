@@ -14,7 +14,7 @@ namespace cis237_assignment_1
 {
     internal class CSVProcessor
     {
-        public bool ImportCsv(string pathToCSVFile, Beverage[] beverages)
+        public void ImportCsv(string pathToCSVFile, Beverage[] beverages)
         {
             StreamReader streamReader = null;
 
@@ -32,7 +32,7 @@ namespace cis237_assignment_1
 
                 }
 
-                return true;
+                return;
 
             }
             catch (Exception e)
@@ -41,7 +41,7 @@ namespace cis237_assignment_1
                 Console.WriteLine();
                 Console.WriteLine(e.StackTrace);
 
-                return false;
+                return;
             }
             finally
             {

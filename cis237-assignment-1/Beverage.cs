@@ -40,6 +40,12 @@ namespace cis237_assignment_1
             set { _name = value; }
         }
 
+        public string Pack
+        {
+            get { return _pack; }
+            set { _pack = value; }
+        }
+
         public decimal Price
         {
             get { return _price; }
