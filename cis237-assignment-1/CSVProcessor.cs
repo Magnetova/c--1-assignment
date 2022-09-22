@@ -14,10 +14,10 @@ namespace cis237_assignment_1
 {
     internal class CSVProcessor
     {
-        public void ImportCsv(string pathToCSVFile, Beverage[] beverages)
+        public void ImportCsv(string pathToCSVFile)
         {
             StreamReader streamReader = null;
-
+            BeverageCollection beverageCollection = new BeverageCollection();
             try
             {
                 string line;
@@ -28,11 +28,14 @@ namespace cis237_assignment_1
 
                 while ((line = streamReader.ReadLine()) != null)
                 {
-                    this.ProcessLine(line, beverages, counter++);
+                    beverageCollection.ProcessLine(line, counter++);
 
                 }
 
+               
+
                 return;
+              
 
             }
             catch (Exception e)
@@ -50,23 +53,11 @@ namespace cis237_assignment_1
                 {
                     streamReader.Close();
                 }
+                
             }
 
 
         }
 
-        private void ProcessLine(string line, Beverage[] beverages, int index)
-        {
-
-            string[] parts = line.Split(',');
-
-            string  id = parts[0];
-            string name = parts[1];
-            string pack = parts[2];
-            decimal price = decimal.Parse(parts[3]);
-            bool active = bool.Parse(parts[4]);  
-
-            beverages[index] = new Beverage(id, name, pack, price, active);
-        }
     }
 }

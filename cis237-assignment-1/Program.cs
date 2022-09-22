@@ -13,6 +13,7 @@ namespace cis237_assignment_1
         {
             BeverageCollection beverageCollection = new BeverageCollection();
             UserInterface userInterface = new UserInterface();
+            CSVProcessor csvProcessor = new CSVProcessor();
             int choice = userInterface.PrintMenu();
 
             while (choice != 5)
@@ -26,14 +27,14 @@ namespace cis237_assignment_1
                     //store csvpath
                     //go to csv processor to load csv file into beverage array
 
-                    beverageCollection.LoadFile(userInterface.GetCsvPath());
+                    csvProcessor.ImportCsv(userInterface.GetCsvPath());
                 }
                 else if (choice == 2)
                 {
                     //print the list
                     //go to user interface to print the list
 
-                    userInterface.PrintList(beverageCollection.ToString());
+                    userInterface.PrintList(beverageCollection.CollectionToString());
                 }
                 else if (choice == 3)
                 {
@@ -52,7 +53,7 @@ namespace cis237_assignment_1
                     //go to beverage collection to load the new beverage into the array
                     beverageCollection.AddNewBeverage(userInterface.NewBeverage());
                 }
-                Console.WriteLine();
+
                 Console.WriteLine();
                 choice = userInterface.PrintMenu();
             }

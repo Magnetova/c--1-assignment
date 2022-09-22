@@ -14,7 +14,6 @@ namespace cis237_assignment_1
     internal class BeverageCollection
     {
         Beverage[] beverages = new Beverage[10000];
-        CSVProcessor csvProcessor = new CSVProcessor();
 
         public string SearchList(string id)
         {
@@ -23,12 +22,15 @@ namespace cis237_assignment_1
 
             foreach (Beverage beverage in beverages)
             {
-                if (beverage.Id == id)
+                if (beverage != null)
                 {
-                    // Concat to the outputstring
-                    searchedBeverage += beverage.ToString() +
-                        Environment.NewLine;
+                    if (beverage.Id == id)
+                    {
+                        // Concat to the outputstring
+                        searchedBeverage += beverage.ToString() +
+                            Environment.NewLine;
 
+                    }
                 }
             }
 
@@ -39,18 +41,37 @@ namespace cis237_assignment_1
 
         public void AddNewBeverage(Beverage newBeverage)
         {
-            beverages = beverages.Append(newBeverage).ToArray();
+            
+            int index = 0;
+
+            do
+            {
+                index++;
+            }
+            while (beverages[index] != null);
+
+            beverages[index] = newBeverage;
+
             return;
             
         }
 
-        public void LoadFile (string CSVpath)
+        public void ProcessLine(string line, int index)
         {
-            csvProcessor.ImportCsv(CSVpath, beverages);
+
+            string[] parts = line.Split(',');
+
+            string id = parts[0];
+            string name = parts[1];
+            string pack = parts[2];
+            decimal price = decimal.Parse(parts[3]);
+            bool active = bool.Parse(parts[4]);
+
+            this.AddNewBeverage(new Beverage(id, name, pack, price, active));
             return;
         }
 
-        public string ToString()
+        public string CollectionToString()
         {
             string outputString = "";
 
