@@ -77,13 +77,13 @@ namespace cis237_assignment_1
             newBeverage.Price = Decimal.Parse(Console.ReadLine());
 
 
-            Console.WriteLine("Is the new beverage active?(0 for no, 1 for yes): ");
-            if(Console.ReadLine() != "1")
+            Console.WriteLine("Is the new beverage active?(0 for false, 1 for true): ");
+            if(Console.ReadLine() == "1")
             {
                 newBeverage.Active = true;
                 
             }
-            else if(Console.ReadLine() != "0")
+            if(Console.ReadLine() == "0")
             {
                 newBeverage.Active = false;
             }

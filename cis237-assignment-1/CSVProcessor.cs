@@ -14,10 +14,10 @@ namespace cis237_assignment_1
 {
     internal class CSVProcessor
     {
-        public void ImportCsv(string pathToCSVFile)
+        public void ImportCsv(string pathToCSVFile, BeverageCollection beverageCollection)
         {
             StreamReader streamReader = null;
-            BeverageCollection beverageCollection = new BeverageCollection();
+            
             try
             {
                 string line;

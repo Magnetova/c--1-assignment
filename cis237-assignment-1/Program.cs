@@ -27,7 +27,7 @@ namespace cis237_assignment_1
                     //store csvpath
                     //go to csv processor to load csv file into beverage array
 
-                    csvProcessor.ImportCsv(userInterface.GetCsvPath());
+                    csvProcessor.ImportCsv(userInterface.GetCsvPath(), beverageCollection);
                 }
                 else if (choice == 2)
                 {
