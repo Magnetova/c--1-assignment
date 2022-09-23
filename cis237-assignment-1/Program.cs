@@ -15,7 +15,7 @@ namespace cis237_assignment_1
             UserInterface userInterface = new UserInterface();
             CSVProcessor csvProcessor = new CSVProcessor();
             int choice = userInterface.PrintMenu();
-
+            bool load_complete = false;
             while (choice != 5)
             {
 
@@ -27,7 +27,19 @@ namespace cis237_assignment_1
                     //store csvpath
                     //go to csv processor to load csv file into beverage array
 
-                    csvProcessor.ImportCsv(userInterface.GetCsvPath(), beverageCollection);
+
+                    if (load_complete == true)
+                    {
+                        Console.WriteLine("A file has already been loaded into the program. Please exit program if you wish to load in a different file.");
+                    }
+                    if (load_complete == false)
+                    {
+                         load_complete = csvProcessor.ImportCsv(userInterface.GetCsvPath(), beverageCollection);
+                    }
+                        
+                    
+
+
                 }
                 else if (choice == 2)
                 {
@@ -51,7 +63,7 @@ namespace cis237_assignment_1
                     //add new beverage
                     //go to user interface to collect id, name, pack, price, and active
                     //go to beverage collection to load the new beverage into the array
-                    beverageCollection.AddNewBeverage(userInterface.NewBeverage());
+                    beverageCollection.AddNewBeverage(userInterface.NewBeverage(beverageCollection));
                 }
 
                 Console.WriteLine();

@@ -21,8 +21,9 @@ namespace cis237_assignment_1
             Console.WriteLine("3. Search List");
             Console.WriteLine("4. Add New Beverage");
             Console.WriteLine("5. Exit");
-
+            Console.Write("Select Option: ");
             int choice = this.GetUserInput();
+            Console.WriteLine();
 
             return choice;
         }
@@ -52,43 +53,81 @@ namespace cis237_assignment_1
         public void PrintList(string outputList)
         {
             Console.WriteLine("Printing the List");
-            Console.WriteLine("ID \t Name \t Pack \t Price \t Active");
+            Console.WriteLine("|  ID           |  Name                                                        |  Pack                   |  Price        |  Active");
+            Console.WriteLine("----------------------------------------------------------------------------------------------------------------------------------------");
             Console.WriteLine(outputList);
             return;
         }
 
-        public Beverage NewBeverage()
+        public Beverage NewBeverage(BeverageCollection beverageCollection)
         {
             Beverage newBeverage = new Beverage();
-
-            Console.WriteLine("Id of new beverage: ");
-            newBeverage.Id = Console.ReadLine();
-       
-
-            Console.WriteLine("Name of new beverage: ");
-            newBeverage.Name = Console.ReadLine();
-
-
-            Console.WriteLine("Pack of new beverage: ");
-            newBeverage.Pack = Console.ReadLine();
-
-
-            Console.WriteLine("Price of new beverage:");
-            newBeverage.Price = Decimal.Parse(Console.ReadLine());
-
-
-            Console.WriteLine("Is the new beverage active?(0 for false, 1 for true): ");
-            if(Console.ReadLine() == "1")
+            string active, price = "";
+            bool checker;
+            do
             {
-                newBeverage.Active = true;
+                Console.Write("Id of new beverage: ");
+                newBeverage.Id = Console.ReadLine();
+                checker = beverageCollection.CheckBeverageId(newBeverage.Id);
+            }
+            while (checker == false);
+            Console.WriteLine();
+
+
+            Console.Write("Name of new beverage: ");
+            newBeverage.Name = Console.ReadLine();
+            Console.WriteLine();
+
+
+            Console.Write("Pack of new beverage: ");
+            newBeverage.Pack = Console.ReadLine();
+            Console.WriteLine();
+
+            do
+            {
+                Console.Write("Price of new beverage:");
+                try
+                {
+                    price = Console.ReadLine();
+                    newBeverage.Price = Decimal.Parse(price);
+                    checker = true;
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("The entered price " + "'" + price + "'" + " is not a decimal value. Please enter a decimal value.");
+                    checker = false;
+                }
+            }
+            while (checker == false);
+            Console.WriteLine();
+
+            do
+            {
+                Console.WriteLine("Is the new beverage active?(0 for False, 1 for True): ");
+                active = Console.ReadLine();
+
+                if (active == "1")
+                {
+                    newBeverage.Active = true;
+                    checker = true;
+                }
+                else if (active == "0")
+                {
+                    newBeverage.Active = false;
+                    checker = true;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid entry. Please try again. ");
+                    checker = false;
+                }
                 
             }
-            if(Console.ReadLine() == "0")
-            {
-                newBeverage.Active = false;
-            }
+            while (checker == false);
+            Console.WriteLine();
 
             return newBeverage;
+
 
         }
 
@@ -113,7 +152,7 @@ namespace cis237_assignment_1
 
         public string GetBeverageID()
         {
-            Console.WriteLine("Please enter beverage ID: ");
+            Console.Write("Please enter beverage ID: ");
             string beverageid = Console.ReadLine();
             return beverageid;
 
@@ -121,8 +160,10 @@ namespace cis237_assignment_1
 
         public void PrintSearchBeverage(string searchBeverage)
         {
+            Console.WriteLine("|  ID           |  Name                                                        |  Pack                   |  Price        |  Active");
+            Console.WriteLine("----------------------------------------------------------------------------------------------------------------------------------------");
             Console.WriteLine(searchBeverage);
-            Console.WriteLine();
+          
             return;
 
         }

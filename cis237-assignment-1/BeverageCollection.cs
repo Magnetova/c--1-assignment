@@ -17,7 +17,7 @@ namespace cis237_assignment_1
 
         public string SearchList(string id)
         {
-            string searchedBeverage = "";
+            string searchedBeverage = "No Beverage with id "+ "'" +id + "'" + " was found.";
 
 
             foreach (Beverage beverage in beverages)
@@ -27,8 +27,7 @@ namespace cis237_assignment_1
                     if (beverage.Id == id)
                     {
                         // Concat to the outputstring
-                        searchedBeverage += beverage.ToString() +
-                            Environment.NewLine;
+                        searchedBeverage = "|  " + beverage.Id.ToString().PadRight(13) + "|  " + beverage.Name.ToString().PadRight(60) + "|  " + beverage.Pack.ToString().PadRight(23) + "|  " + beverage.Price.ToString().PadRight(13) + "|  " + beverage.Active.ToString();
 
                     }
                 }
@@ -71,6 +70,23 @@ namespace cis237_assignment_1
             return;
         }
 
+        public bool CheckBeverageId(string id)
+        {
+            foreach (Beverage beverage in beverages)
+            {
+                if (beverage != null)
+                {
+                    if (beverage.Id == id)
+                    {
+                        Console.WriteLine("The id "+"'"+id+"'"+" is already being used. Please enter a different id.");
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
         public string CollectionToString()
         {
             string outputString = "";
@@ -81,7 +97,7 @@ namespace cis237_assignment_1
                 if (beverage != null)
                 {
                     // Concat to the outputstring
-                    outputString += beverage.ToString() +
+                    outputString += "|  "+ beverage.Id.ToString().PadRight(13) + "|  " + beverage.Name.ToString().PadRight(60) + "|  " + beverage.Pack.ToString().PadRight(23) + "|  " + beverage.Price.ToString().PadRight(13) + "|  " + beverage.Active.ToString() +
                         Environment.NewLine;
                    
                 }
