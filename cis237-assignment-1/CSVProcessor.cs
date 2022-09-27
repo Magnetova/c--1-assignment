@@ -1,7 +1,6 @@
 ﻿// Cayden Greer
 // CIS 237 - Fall 2022
-// 09-16-2022 
-
+// 09-27-2022 
 
 using System;
 using System.Collections.Generic;
@@ -14,6 +13,14 @@ namespace cis237_assignment_1
 {
     internal class CSVProcessor
     {
+        /// <summary>
+        /// Creates a stream reader to read the csv file from the user given path to the csv file
+        /// Passes the string created from reading a line in the csv file to beveragecolleciton.ProcessLine
+        /// Throws error messages when file path returns invalid results
+        /// </summary>
+        /// <param name="pathToCSVFile"> User inputed string that contains the filepath for the stream reader to start reading from </param>
+        /// <param name="beverageCollection"> An instance of the beverage collection class used to pass methods from CSVProcessor to BeverageCollection methods </param>
+        /// <returns> A boolean that tells the program if a file has been properly loaded and read to prevent the user from being able to load another file </returns>
         public bool ImportCsv(string pathToCSVFile, BeverageCollection beverageCollection)
         {
             StreamReader streamReader = null;
@@ -24,11 +31,10 @@ namespace cis237_assignment_1
 
                 streamReader = new StreamReader(pathToCSVFile);
 
-                int counter = 0;
 
                 while ((line = streamReader.ReadLine()) != null)
                 {
-                    beverageCollection.ProcessLine(line, counter++);
+                    beverageCollection.ProcessLine(line);
 
                 }
 

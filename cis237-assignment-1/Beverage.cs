@@ -1,6 +1,6 @@
 ﻿// Cayden Greer
 // CIS 237 - Fall 2022
-// 09-16-2022 
+// 09-27-2022 
 
 
 using System;
@@ -57,7 +57,10 @@ namespace cis237_assignment_1
             get { return _active; }
             set { _active = value; }
         }
-
+        /// <summary>
+        /// Overides the language incorporated 'toString' method in order to turn Beverage type objects into strings
+        /// </summary>
+        /// <returns> a string with the beverage id, name, pack, price, and active </returns>
         public override string ToString()
         {
             return _id + "\t" + _name + "\t" + _pack + "\t" + _price + "\t" + _active;

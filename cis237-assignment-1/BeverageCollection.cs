@@ -1,6 +1,6 @@
 ﻿// Cayden Greer
 // CIS 237 - Fall 2022
-// 09-16-2022 
+// 09-27-2022 
 
 
 using System;
@@ -14,7 +14,11 @@ namespace cis237_assignment_1
     internal class BeverageCollection
     {
         Beverage[] beverages = new Beverage[10000];
-
+        /// <summary>
+        /// Sorts through the array 'beverages' to find the beverage that has the same id as the id parameter
+        /// </summary>
+        /// <param name="id"> Value of the search id given by the user </param>
+        /// <returns> A string with the contents of the searched beverage </returns>
         public string SearchList(string id)
         {
             string searchedBeverage = "No Beverage with id "+ "'" +id + "'" + " was found.";
@@ -26,7 +30,7 @@ namespace cis237_assignment_1
                 {
                     if (beverage.Id == id)
                     {
-                        // Concat to the outputstring
+                        
                         searchedBeverage = "|  " + beverage.Id.ToString().PadRight(13) + "|  " + beverage.Name.ToString().PadRight(60) + "|  " + beverage.Pack.ToString().PadRight(23) + "|  " + beverage.Price.ToString().PadRight(13) + "|  " + beverage.Active.ToString();
 
                     }
@@ -37,7 +41,10 @@ namespace cis237_assignment_1
             return searchedBeverage;
         }
 
-
+        /// <summary>
+        /// Sorts through the array to find the next available 'null' location to add a Beverage to the end of the beverage array
+        /// </summary>
+        /// <param name="newBeverage"> A Beverage type object that contains the inputed values (form csv or user) for the new beverage </param>
         public void AddNewBeverage(Beverage newBeverage)
         {
             
@@ -54,8 +61,11 @@ namespace cis237_assignment_1
             return;
             
         }
-
-        public void ProcessLine(string line, int index)
+        /// <summary>
+        /// Breaks a string of information read from the csv processor and to add to a new Beverage object
+        /// </summary>
+        /// <param name="line"> string read from the streamreader and inputed from the csv processor </param>
+        public void ProcessLine(string line)
         {
 
             string[] parts = line.Split(',');
@@ -69,7 +79,11 @@ namespace cis237_assignment_1
             this.AddNewBeverage(new Beverage(id, name, pack, price, active));
             return;
         }
-
+        /// <summary>
+        /// Sorts through the beverages array to make sure that the user inputed id is not already being used by another Beverage object
+        /// </summary>
+        /// <param name="id"> Value of the search id given by the user </param>
+        /// <returns> A boolean that determines if the id is already in use or not </returns>
         public bool CheckBeverageId(string id)
         {
             foreach (Beverage beverage in beverages)
@@ -86,7 +100,11 @@ namespace cis237_assignment_1
 
             return true;
         }
-
+        /// <summary>
+        /// For every beverage object in the beverages array, the id, name, pack, price, and active are converted into a string which is then concatenated into one string.
+        /// Extra padding included to make the formatting better when the list is printed.
+        /// </summary>
+        /// <returns> A large string that contains all of the beverages from the beverages array </returns>
         public string CollectionToString()
         {
             string outputString = "";

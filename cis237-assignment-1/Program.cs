@@ -1,6 +1,6 @@
 ﻿// Cayden Greer
 // CIS 237 - Fall 2022
-// 09-16-2022 
+// 09-27-2022 
 
 
 using System;
@@ -9,6 +9,10 @@ namespace cis237_assignment_1
 {
     class Program
     {
+        /// <summary>
+        /// Main body of program. No methods here, just points the program to which methods it needs to follow in the other sln classes
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             BeverageCollection beverageCollection = new BeverageCollection();
@@ -16,6 +20,9 @@ namespace cis237_assignment_1
             CSVProcessor csvProcessor = new CSVProcessor();
             int choice = userInterface.PrintMenu();
             bool load_complete = false;
+
+
+            
             while (choice != 5)
             {
 

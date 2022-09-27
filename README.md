@@ -2,6 +2,7 @@
 
 ## Author
 
+Cayden Greer
 
 
 ## Description
@@ -122,9 +123,9 @@ Suggestion/Hints:
 
 ## Outside Resources Used
 
-
+Used assignment from previous semester to re-learn the "Pad" tool in order to make the console look better.
 
 ## Known Problems, Issues, And/Or Errors in the Program
 
-
+There are no known issues or problems within the program.
 
