@@ -41,7 +41,8 @@ namespace cis237_assignment_1
                     }
                     if (load_complete == false)
                     {
-                         load_complete = csvProcessor.ImportCsv(userInterface.GetCsvPath(), beverageCollection);
+                        load_complete = csvProcessor.ImportCsv(userInterface.GetCsvPath(), beverageCollection);
+                        Console.WriteLine("\n\nFile succesfully loaded!");
                     }
                         
                     
@@ -71,9 +72,10 @@ namespace cis237_assignment_1
                     //go to user interface to collect id, name, pack, price, and active
                     //go to beverage collection to load the new beverage into the array
                     beverageCollection.AddNewBeverage(userInterface.NewBeverage(beverageCollection));
+                    Console.WriteLine("\n\nNew beverage has been added!");
                 }
 
-                Console.WriteLine();
+                Console.WriteLine("\n\n\n");
                 choice = userInterface.PrintMenu();
             }
 

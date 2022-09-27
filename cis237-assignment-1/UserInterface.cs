@@ -62,10 +62,19 @@ namespace cis237_assignment_1
         /// <param name="outputList"> A single string that contains the entire array of beverages that has been converted into a string </param>
         public void PrintList(string outputList)
         {
-            Console.WriteLine("Printing the List");
-            Console.WriteLine("|  ID           |  Name                                                        |  Pack                   |  Price        |  Active");
-            Console.WriteLine("----------------------------------------------------------------------------------------------------------------------------------------");
-            Console.WriteLine(outputList);
+            // If there is nothing in the list, then the message will be displayed
+            if (outputList == null)
+            {
+                Console.WriteLine("There is nothing in the list. Please create list and try again.");
+            }
+            else
+            {
+                Console.WriteLine("Printing the List");
+                Console.WriteLine("|  ID           |  Name                                                        |  Pack                   |  Price        |  Active");
+                Console.WriteLine("----------------------------------------------------------------------------------------------------------------------------------------");
+                Console.WriteLine(outputList);
+                Console.WriteLine("\n\nList has been printed!");
+            }
             return;
         }
 
@@ -206,10 +215,15 @@ namespace cis237_assignment_1
         /// <param name="searchBeverage"> A Beverage type object that has been converted to a string from the beverages array </param>
         public void PrintSearchBeverage(string searchBeverage)
         {
-            Console.WriteLine("|  ID           |  Name                                                        |  Pack                   |  Price        |  Active");
-            Console.WriteLine("----------------------------------------------------------------------------------------------------------------------------------------");
-            Console.WriteLine(searchBeverage);
-          
+            // The beverage will not be printed if there was no match
+            if (searchBeverage != null)
+            {
+                Console.WriteLine("|  ID           |  Name                                                        |  Pack                   |  Price        |  Active");
+                Console.WriteLine("----------------------------------------------------------------------------------------------------------------------------------------");
+                Console.WriteLine(searchBeverage);
+
+            }
+            
             return;
 
         }

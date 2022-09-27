@@ -21,7 +21,7 @@ namespace cis237_assignment_1
         /// <returns> A string with the contents of the searched beverage </returns>
         public string SearchList(string id)
         {
-            string searchedBeverage = "No Beverage with id "+ "'" +id + "'" + " was found.";
+            string searchedBeverage = null;
 
 
             foreach (Beverage beverage in beverages)
@@ -35,6 +35,12 @@ namespace cis237_assignment_1
 
                     }
                 }
+            }
+            // Checks to see if the user inputed id matched any beverage id
+            // If not, then message is displayed
+            if (searchedBeverage == null)
+            {
+                Console.WriteLine("No Beverage with id "+ "'" +id + "'" + " was found.");
             }
 
 
@@ -107,7 +113,7 @@ namespace cis237_assignment_1
         /// <returns> A large string that contains all of the beverages from the beverages array </returns>
         public string CollectionToString()
         {
-            string outputString = "";
+            string outputString = null;
 
 
             foreach (Beverage beverage in beverages)
